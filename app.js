@@ -17,7 +17,7 @@ app.use(express.json());
 //   next();
 // });
 
-app.get("/api/table", (req, res, next) => {
+app.get("/test", (req, res, next) => {
   const table = [
     // {
     //   _id: "oeihfzeoi",
@@ -27,7 +27,8 @@ app.get("/api/table", (req, res, next) => {
   ];
 
   let fakeData = {
-    _id: "oeihfzeoi",
+    // _id: "oeihfzeoi",
+    uuid: "112eXX-345XXX",
     nom: "POL",
     email: "polettiweb@gmail.com",
   };
