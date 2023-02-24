@@ -1,0 +1,11 @@
+{
+  "name": "vmi_tests_backend",
+  "version": "1.0.0",
+  "description": "tests backend VMI",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
