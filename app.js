@@ -1,4 +1,5 @@
 const express = require("express");
+const { faker } = require("@faker-js/faker");
 
 const app = express();
 
@@ -18,35 +19,16 @@ app.use(express.json());
 // });
 
 app.get("/test", (req, res, next) => {
-  const table = [
-    // {
-    //   _id: "oeihfzeoi",
-    //   nom: "POL",
-    //   email: "polettiweb@gmail.com",
-    // },
-  ];
+  const table = [];
 
-  let fakeData = {
-    // _id: "oeihfzeoi",
-    uuid: "112eXX-345XXX",
-    nom: "POL",
-    email: "polettiweb@gmail.com",
-  };
-
-  for (let i = 0; i < 3; i++) {
-    // const me = Object.create(person);
-
-    table.push(fakeData);
+  for (let i = 0; i < 100; i++) {
+    table.push({
+      uuid: faker.datatype.array(2),
+      nom: faker.name.lastName(),
+      email: faker.internet.email(),
+    });
   }
 
-  //   const table = [
-  //     {
-  //       _id: "oeihfzeoi",
-  //       uuid: "112eXX-345XXX",
-  //       nom: "POL",
-  //       email: "polettiweb@gmail.com",
-  //     },
-  //   ];
   res.status(200).json(table);
   res.status(200).json({ success: true });
 });
