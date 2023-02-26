@@ -26,13 +26,6 @@ mongoose
   .connect("mongodb://localhost:27017/BACK-END", { useNewUrlParser: true })
   .then(() => console.log("connected to db"))
   .catch((error) => console.log("connection error", error));
-// mongoose
-//   .connect(
-//     "mongodb+srv://polettiweb:HNEmBdvLbl8yeZCJ@vmi.jqfakbu.mongodb.net/?retryWrites=true&w=majority",
-//     { useNewUrlParser: true, useUnifiedTopology: true }
-//   )
-//   .then(() => console.log("Connexion à MongoDB réussie !"))
-//   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
