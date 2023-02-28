@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <script>
+    function saveFile(blob, filename) {
+      if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, filename);
+      } else {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        document.body.appendChild(a);
+        a.href = url;
+        a.download = filename;
+        a.click();
+        setTimeout(() => {
+          window.url.revokeObjectURL(url);
+          document.body.removeChild(a);
+        }, 0);
+      }
+    }
+    function createCsv() {
+      console.log("test");
+      let people = [];
+      for (let i = 0; i < 1000000; i++) {
+        people.push({
+          uuid: `UUID${i}${i}${i}${i}ABC`,
+          nom: `Nom utilisateur ${i}`,
+          email: `utilisateur${i}@fake${i}.com`,
+        });
+      }
+
+      let csvContent = "uuid,email,nom\n";
+
+      people.forEach((person) => {
+        let row = person.uuid + "," + person.email + "," + person.nom + "\n";
+        csvContent += row;
+      });
+      var data = new Blob([csvContent], { type: "text/csv" });
+
+      saveFile(data, "test.csv");
+    }
+  </script>
+  <body>
+    <h1>Write to CSV</h1>
+    <form>
+      <input type="button" value="Write to CSV" onclick="createCsv();" />
+    </form>
+  </body>
+</html>
