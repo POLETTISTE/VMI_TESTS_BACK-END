@@ -16,7 +16,7 @@ const db = mysql.createConnection({
   socketPath: "/tmp/mysql.sock",
 });
 
-//CONNECT
+//CONNECT DATABASE
 db.connect((err) => {
   if (err) throw err;
   console.log("mysql connected...");
@@ -32,14 +32,13 @@ fs.createReadStream("mockData.csv")
 
 console.log("console.log", results);
 
-//INSERT DONNEES CSV STOCKEES DANS RESULTS
+//INSERT DATA CSV IN ARRAY RESULTS
+// Créer une methode /import-csv pour importer le csv dans la table sql
 app.get("/import-csv", (req, res) => {
   results.forEach((result) => {
     let sql = `INSERT INTO user set ?`;
     let query = db.query(sql, result, (err, result) => {
       if (err) throw err;
-
-      console.log(result);
     });
   });
 
@@ -48,19 +47,15 @@ app.get("/import-csv", (req, res) => {
     .json({ message: "import des données dans la base de données ..." });
 });
 
-// GET DATAS
-// // Créer un serveur avec express et une methode get /test qui renvoit {”success”: true}
-app.get("/test", (req, res, next) => {
+// Créer un serveur avec express et une methode get /test qui renvoit {”success”: true}
+app.get("/test", (req, res) => {
   let sql = "select * from user";
   let query = db.query(sql, (err, result) => {
     if (err) throw err;
-    console.log(result);
-    // res.send("users fetched...");
   });
   res.status(200).json({ success: "true" });
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
+//LISTENING SERVER PORT
+// Créer un serveur avec express et une methode get /test qui renvoit {”success”: true}
 app.listen("3000"), () => console.log("server started");
