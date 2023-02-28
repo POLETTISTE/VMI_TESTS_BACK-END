@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>CSV GENERATOR</title>
   </head>
 
   <script>
@@ -26,7 +26,6 @@
       }
     }
     function createCsv() {
-      console.log("test");
       let people = [];
       for (let i = 0; i < 1000000; i++) {
         people.push({
@@ -48,9 +47,10 @@
     }
   </script>
   <body>
-    <h1>Write to CSV</h1>
+    <h1>CSV GENERATOR</h1>
+    <h2>Generate a CSV file with 1 000 000 fields ('uuid', 'email', 'nom')</h2>
     <form>
-      <input type="button" value="Write to CSV" onclick="createCsv();" />
+      <input type="button" value="Create now !" onclick="createCsv();" />
     </form>
   </body>
 </html>
