@@ -8,12 +8,6 @@
 git clone https://github.com/POLETTISTE/VMI_TESTS_BACK-END.git
 ```
 
-### Go to the project directory :
-
-```
-cd BACK-END
-```
-
 ### Install project dependancies :
 
 ```
